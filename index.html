@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Font-Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="scripts/script.js"></script>
+
+    <script>
+        localStorage.setItem('puter.auth.token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0IjoiYXUiLCJ2IjoiMC4wLjAiLCJ1dSI6IjJmS2hXdXBpU0ZXbCtVdE0xc1V3c0E9PSIsImF1IjoiY3N1ZndPbWpXdUNlOFpPeVhJeTlHQT09IiwicyI6Im0wMlNrZEVSbjJLaXBWOXQ5ZEprblE9PSIsImlhdCI6MTc0MjE1ODk1MH0.LngzDsgx-KkDHBQmfbS-bIE6Nw_FfF-w-7p9RAAwx1o');
+    </script>
+</head>
+<body>
+    <script src="https://js.puter.com/v2/"></script>
+
+    <div class="content">
+        <div class="card">
+            <div class="card-head">
+                <div class="card-head-language">
+                    <button type="button" id="btn-select-language">
+                        <div id="language-selected">
+                            <img>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-caret-left"></i>
+                        </div>
+                    </button>
+                </div>
+                <div class="box-more-languages">
+                    <div class="select-language" data-name="Portuguese">
+                        <img src="https://flagpedia.net/data/flags/h24/br.webp" alt="Portuguese">
+                    </div>
+                    <div class="select-language" data-name="Spanish">
+                        <img src="https://flagpedia.net/data/flags/h24/es.webp" alt="Spanish">
+                    </div>
+                    <div class="select-language" data-name="German">
+                        <img src="https://flagpedia.net/data/flags/h24/de.webp" alt="German">
+                    </div>
+                    <div class="select-language" data-name="French">
+                        <img src="https://flagpedia.net/data/flags/h24/fr.webp" alt="French">
+                    </div>
+                    <div class="select-language" data-name="Russian">
+                        <img src="https://flagpedia.net/data/flags/h24/ru.webp" alt="Russian">
+                    </div>
+                </div>
+                <div class="card-head-reload">
+                    <button type="button" id="btn-reload">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                    </button>
+                </div>
+                <div class="card-head-content fadeIn">
+                    <div class="card-head-word"></div>
+                    <div class="card-head-audio">
+                        <button type="button" id="btn-audio">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                        <audio id="wordAudio" src=""></audio>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="card-body-loading">
+                    <div class="loading-container">
+                        <div class="loading-bar"></div>
+                    </div>
+                </div>
+                <div class="card-body-top">
+                    Explicação:
+                </div>
+                <div class="card-body-bottom">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
