@@ -1,5 +1,5 @@
 $(document).ready(async () => {
-    let executed = false;
+    let executed = true;
     let randomWord = await getRandomWord();
 
     const languageStorage = localStorage.getItem('language');
@@ -49,14 +49,11 @@ $(document).ready(async () => {
             randomWord = await getRandomWord();
         };
 
-        console.log('Palavra aleatória:', randomWord);
-
         const var1 = randomWord.padEnd(1, '_').slice(0, 1).toLowerCase();
         const var2 = randomWord.padEnd(3, '_').slice(0, 3).toLowerCase();
         const var3 = randomWord.padEnd(5, '_').slice(0, 5).toLowerCase();
 
         language = language || $('#language-selected').attr('data-name');
-        console.log('Idioma:', language);
 
         $('#wordAudio').attr('src', `https://dictionary.cambridge.org/media/english/us_pron/${var1}/${var2}/${var3}/${randomWord.toLowerCase()}.mp3`);
 
@@ -76,6 +73,8 @@ $(document).ready(async () => {
                 if (randomWord === $('.card-head-word').text()) {
                     $('.card-body-bottom').text(response);
                     $('.card-body-loading').css('display', 'none');
+
+                    executed = false;
                 }
             });
     }
@@ -138,14 +137,18 @@ $(document).ready(async () => {
         const imageSource = $(this).find('img').attr('src');
         const language = $(this).data('name');
 
-        $('#language-selected > img').attr('src', imageSource);
-        $('#language-selected').attr('data-name', language);
+        if($('#language-selected').attr('data-name') !== language && !executed) {
+            executed = true;
 
-        $('.card-body-loading').css('display', 'flex');
+            $('#language-selected > img').attr('src', imageSource);
+            $('#language-selected').attr('data-name', language);
 
-        localStorage.setItem('language', language);
+            $('.card-body-loading').css('display', 'flex');
 
-        main();
+            localStorage.setItem('language', language);
+
+            main();
+        }
     });
 
     await main();
