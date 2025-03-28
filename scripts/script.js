@@ -107,6 +107,7 @@ $(document).ready(async () => {
         const audio = $('#wordAudio')[0];
 
         if (!audio.paused) audio.currentTime = 0;
+        audio.volume = 0.3;
         audio.play().catch(() => {
             $('#btn-audio').find('i').removeClass('fa-volume-high');
             $('#btn-audio').find('i').addClass('fa-volume-xmark');
