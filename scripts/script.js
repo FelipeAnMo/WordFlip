@@ -75,15 +75,21 @@ $(document).ready(async () => {
                     $('.card-body-loading').css('display', 'none');
 
                     executed = false;
+                    console.log(executed);
                 }
             });
     }
 
     $('#btn-reload').on('click', async function () {
-        randomWord = await getRandomWord();
-
-        if (!executed) {
+        if(!executed) {
             executed = true;
+            randomWord = await getRandomWord();
+
+            setTimeout(() => {
+                $('#btn-audio').find('i').addClass('fa-volume-high');
+                $('#btn-audio').find('i').removeClass('fa-volume-xmark');
+            }, 750);
+
             $('.card-body-loading').css('display', 'flex');
             $('#btn-reload').addClass('reload');
             $('.card-head-content').addClass('fadeInOutIn');
@@ -93,15 +99,18 @@ $(document).ready(async () => {
             setTimeout(() => {
                 $('#btn-reload').removeClass('reload');
                 $('.card-head-content').removeClass('fadeInOutIn');
-                executed = false;
             }, 1500);
         }
     });
 
     $('#btn-audio').on('click', function () {
         const audio = $('#wordAudio')[0];
+
         if (!audio.paused) audio.currentTime = 0;
-        audio.play();
+        audio.play().catch(() => {
+            $('#btn-audio').find('i').removeClass('fa-volume-high');
+            $('#btn-audio').find('i').addClass('fa-volume-xmark');
+        });
     });
 
     $('#btn-select-language').on('click', function () {
