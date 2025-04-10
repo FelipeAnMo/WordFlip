@@ -1,4 +1,21 @@
 $(document).ready(async () => {
+    const mensagem = 'O que significa Hello World?';
+
+    fetch("http://localhost:1234/mensagem", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ message: mensagem })
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+    })
+    .catch(error => {
+      console.error("Erro na requisição:", error);
+    });
+
     let executed = true;
     let randomWord = await getRandomWord();
 
